@@ -2,6 +2,7 @@
 use App\Http\Controllers\krsController;
 use App\Http\Controllers\mahasiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,13 @@ Route::controller(krsController::class)->group(function () {
     Route::get('/krs/{id}', 'edit');
     Route::put('/krs/{id}', 'update');
 });
+
+Route::get('/laporan/mahasiswa',[LaporanController::class,'index']);
+Route::get('/laporan/mahasiswa/pdf',[LaporanController::class,'cetak_pdf']);
+Route::resource('admin/mahasiswa', 'App\Http\Controllers\Admin\mahasiswaController');
+
+
     
+Route::resource('admin/matakuliah', 'App\\Http\\Controller\\Admin\matakuliahController');
+Route::resource('admin/sertifikat', 'App\\Http\\Controller\\Admin\sertifikatController');
+Route::resource('admin/dosen', 'App\\Http\\Controller\\Admin\dosenController');
